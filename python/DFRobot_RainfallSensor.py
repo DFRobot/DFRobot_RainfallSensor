@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 '''!
   @file        DFRobot_RainfallSensor.py
-  @brief       这是SEN0575设备基库
+  @brief       SEN0575 device library
   @copyright   Copyright (c) 2021 DFRobot Co.Ltd (http://www.dfrobot.com)
   @license     The MIT License (MIT)
   @author      fary(feng.yang@dfrobot.com)
@@ -19,56 +19,56 @@ import time
 
 
 class DFRobot_RainfallSensor(object):
-  ## SEN0575 存储PID的输入寄存器的地址。
+  ## SEN0575 stores the address of the input register for PID in memory.
   SEN0575_INPUT_REG_PID                          = 0x0000
-  ## SEN0575 存储VID的输入寄存器的地址。
+  ## The address of the input register for VID in memory.
   SEN0575_INPUT_REG_VID                          = 0x0001
-  ## SEN0575 存储设备地址的输入寄存器的地址。
+  ## The address of the input register for device address in memory.
   SEN0575_INPUT_REG_ADDR                         = 0x0002
-  ## SEN0575 存储设备波特率的输入寄存器的地址。
+  ## The address of the input register for device baudrate in memory.
   SEN0575_INPUT_REG_BAUD                         = 0x0003
-  ## SEN0575 存储RS485奇偶检验位与停止位的输入寄存器的地址。
+  ## The address of the input register for RS485 parity bit and stop bit in memory.
   SEN0575_INPUT_REG_VERIFYANDSTOP                = 0x0004
-  ## SEN0575 存储固件版本的输入寄存器地址。
+  ## The address of the input register for firmware version in memory.
   SEN0575_INPUT_REG_VERSION                      = 0x0005
   
-  ## SEN0575 存储设置时间内的低16位累计雨量的输入寄存器地址。
+  ## The address of the input register for low 16-bit cumulative rainfall in set time.
   SEN0575_INPUT_REG_TIME_RAIN_FALL_L             = 0x0006
-  ## SEN0575 存储设置时间内的高16位累计雨量的输入寄存器的地址。
+  ## The address of the input register for high 16-bit cumulative rainfall in set time.
   SEN0575_INPUT_REG_TIME_RAIN_FALL_H             = 0x0007
-  ## SEN0575 存储开始工作后低16位累计雨量的输入寄存器的地址。
+  ## The address of the input register for low 16-bit cumulative rainfall since working started.
   SEN0575_INPUT_REG_CUMULATIVE_RAINFALL_L        = 0x0008  
-  ## SEN0575 存储开始工作后高16位累计雨量的输入寄存器的地址。
+  ## The address of the input register for high 16-bit cumulative rainfall since working started.
   SEN0575_INPUT_REG_CUMULATIVE_RAINFALL_H        = 0x0009  
-  ## SEN0575 存储原始数据（低16位）的输入寄存器的地址。
+  ## The address of the input register for raw data (low 16-bit) in memory.
   SEN0575_INPUT_REG_RAW_DATA_L                   = 0x000A  
-  ## SEN0575 存储原始数据（高16位）的输入寄存器的地址。
+  ## The address of the input register for raw data (high 16-bit) in memory.
   SEN0575_INPUT_REG_RAW_DATA_H                   = 0x000B  
-  ## SEN0575 存储系统工作时间的输入寄存器的地址。
+  ## The address of the input register for system working time in memory.
   SEN0575_INPUT_REG_SYS_TIME                     = 0x000C
-  ## 设置计算累计雨量的时间
+  ## Set the time to calculate cumulative rainfall.
   SEN0575_HOLDING_REG_RAW_RAIN_HOUR              = 0x0006
-  ## 设置雨量累加值
+  ## Set the base rainfall value.
   SEN0575_HOLDING_REG_RAW_BASE_RAINFALL          = 0x0007
   
-  ## SEN0575 存储PID的输入寄存器的地址。
+  ## The address of the input register for PID in memory.
   SEN0575_I2C_REG_PID                          = 0x00
-  ## SEN0575 存储VID的输入寄存器的地址。
+  ## The address of the input register for VID in memory.
   SEN0575_I2C_REG_VID                          = 0x02
-  ## SEN0575 存储固件版本的输入寄存器地址。
+  ## The address of the input register for firmware version in memory.
   SEN0575_I2C_REG_VERSION                      = 0x0A
-  ## SEN0575 存储设置时间内的累计雨量
+  ## SEN0575 Stores the cumulative rainfall within the set time
   SEN0575_I2C_REG_TIME_RAINFALL                = 0x0C
-  ## SEN0575 存储开始工作后累计雨量
+  ## SEN0575 Stores the cumulative rainfall since starting work
   SEN0575_I2C_REG_CUMULATIVE_RAINFALL          = 0x10
-  ## SEN0575 存储原始数据低16位
+  ## SEN0575 Stores the low 16 bits of the raw data
   SEN0575_I2C_REG_RAW_DATA                     = 0x14
-  ## SEN0575 存储原始数据低16位
+  ## SEN0575 Stores the system time
   SEN0575_I2C_REG_SYS_TIME                     = 0x18
   
-  ## 设置计算累计雨量的时间  
+  ## Sets the time for calculating the cumulative rainfall
   SEN0575_I2C_REG_RAW_RAIN_HOUR                = 0x26
-  ## 设置雨量累加值  
+  ## Sets the base value of accumulated rainfall
   SEN0575_I2C_REG_RAW_BASE_RAINFALL            = 0x28
 
   I2C_MODE  =0
@@ -85,8 +85,8 @@ class DFRobot_RainfallSensor(object):
   
   def begin(self):
     '''!
-      @brief 本函数将会尝试与从机设备进行通信,根据返回值判断通信是否成功
-      @return 返回通信结果
+      @brief This function will attempt to communicate with a slave device and determine if the communication is successful based on the return value.
+      @return Communication result
       @retval true  Succeed
       @retval false Failed
     '''
@@ -108,7 +108,7 @@ class DFRobot_RainfallSensor(object):
   def get_sensor_working_time(self):
     '''!
       @brief Obtain the sensor working time
-      @return 工作时间,单位小时
+      @return Working time of the sensor, in hours
     '''
     if self._mode == self.I2C_MODE:
       list = self._read_register(self.SEN0575_I2C_REG_SYS_TIME, 2)
@@ -120,8 +120,8 @@ class DFRobot_RainfallSensor(object):
 
   def get_pid_vid(self):
     '''!
-      @brief  获取pid和vid
-      @return  Return  true:正确获取，false:获取数据失败或者获取数据错误
+      @brief  Get the PID and VID of the device.
+      @return   Return true if the data is obtained correctly, false if failed or incorrect data.
     '''
     ret = False
     if self._mode == self.I2C_MODE:
@@ -138,8 +138,8 @@ class DFRobot_RainfallSensor(object):
 
   def get_rainfall(self):
     '''!
-      @brief  获取累计雨量
-      @return 累计雨量
+      @brief  Get cumulative rainfall
+      @return Cumulative rainfall value
     '''
     if self._mode == self.I2C_MODE:
       list = self._read_register(self.SEN0575_I2C_REG_CUMULATIVE_RAINFALL, 4)
@@ -151,9 +151,9 @@ class DFRobot_RainfallSensor(object):
 
   def get_rainfall_time(self,hour):
     '''!
-      @brief  获取指定时间内的累计雨量
-      @param hour 指定时间(有效设置为1-24小时)
-      @return 累计雨量
+      @brief  Get the cumulative rainfall within the specified time
+      @param hour Specified time (valid range is 1-24 hours)
+      @return Cumulative rainfall
     '''
     if hour>24:
       return 0
@@ -170,8 +170,8 @@ class DFRobot_RainfallSensor(object):
 
   def get_raw_data(self):
     '''!
-      @brief 获取原始数据
-      @return 雨量的翻斗次数，单位 次
+      @brief Get raw data
+      @return Number of tipping bucket counts, unit: count
     '''
     if self._mode == self.I2C_MODE:
       list = self._read_register(self.SEN0575_I2C_REG_RAW_DATA, 4)
@@ -183,9 +183,9 @@ class DFRobot_RainfallSensor(object):
 
   def set_rain_accumulated_value(self, value):
     '''!
-      @brief 设置雨量累加值
-      @param value 雨量累加值，单位为毫米
-      @return 返回 0 设置成功，其他值设置失败 
+      @brief Set the rainfall accumulation value
+      @param value Rainfall accumulation value, in millimeters
+      @return Returns 0 if setting succeeded, other values if setting failed
     '''
     data = int(value * 10000)
     if self._mode == self.I2C_MODE:
@@ -221,7 +221,7 @@ class DFRobot_RainfallSensor_UART(DFRobot_RainfallSensor):
   '''
   def __init__(self,):
     '''!
-      @brief 初始化串口
+      @brief Initialize the serial port
     '''
     self._baud = 9600
     self._addr = 0xC0
@@ -258,7 +258,7 @@ class DFRobot_RainfallSensor_I2C(DFRobot_RainfallSensor):
   '''
   def __init__(self,bus=1):
     '''!
-      @brief 初始化串口
+      @brief Initialize I2C
     '''
     self._addr = 0x1D
     self.i2c = smbus.SMBus(bus)

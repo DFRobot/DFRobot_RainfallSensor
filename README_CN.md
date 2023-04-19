@@ -1,9 +1,8 @@
 DFRobot_RainfallSensor
 ===========================
-
 * [English Version](./README.md)
 
-本库提供了获取SEN0575采集数据的全部方法，用户只需要简单的使用本库就可以获取到SEN0575采集的数据。
+本库为SEN0575 雨量传感器套件提供了Arduino IDE 和树莓派软件驱动以及示例代码，用户可根据此库通过软件操作来获取雨量传感器获取的24小时内的雨量信息、传感器的工作时间以及传感器工作时间内的累计雨量信息。
 
 ![产品效果图片](./resources/images/SEN0575.png)
 
@@ -97,7 +96,7 @@ Arduino Leonardo   |      √       |              |             |
 FireBeetle-ESP8266 |      √       |              |             |
 FireBeetle-ESP32   |      √       |              |             |
 FireBeetle-M0      |      √       |              |             |
-Micro:bit          |              |       √      |             |
+Micro:bit          |      √(I2C） |   √(UART)    |             |
 
 ## 历史
 - 2023-02-28- 1.0.0 版本

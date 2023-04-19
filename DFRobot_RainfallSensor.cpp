@@ -1,7 +1,7 @@
 /*!
  * @file  DFRobot_RainfallSensor.cpp
  * @brief  Define infrastructure of DFRobot_RainfallSensor class
- * @details  该库实现了与SEN0575设备进行通信的所有功能，包括配置设备参数和读取设备数据
+ * @details  This library implements all the functions of communicating with the SEN0575 device, including configuring device parameters and reading device data.
  * @copyright  Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license  The MIT License (MIT)
  * @author  [fary](feng.yang@dfrobot.com)

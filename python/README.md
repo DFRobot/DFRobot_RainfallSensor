@@ -3,7 +3,7 @@ DFRobot_RainfallSensor
 
 - [中文版](./README_CN.md)
 
-本库提供了获取SEN0575采集数据的全部方法，用户只需要简单的使用本库就可以获取到SEN0575采集的数据。
+This library provides Arduino IDE and Raspberry Pi software drivers, as well as example code, for the SEN0575 rainfall sensor kit. With this library, users can obtain 24-hour rainfall information, the sensor's operating time, and the accumulated rainfall information during the sensor's operating time through software operations.
 
 ![产品效果图](../resources/images/SEN0575.png)
 
@@ -21,20 +21,25 @@ DFRobot_RainfallSensor
   * [credits](#credits)
 
 ## Summary
-* 读取雨量计数据
+* Read rainfall sensor data
 
 ## Installation
 
-要使用库, 首先下载库文件, 将其粘贴到指定的目录中, 然后打开examples文件夹并在该文件夹中运行演示。
-本库关联了modbus_tk库，使用前请确保树莓派已经下载了modbus_tk。
-
+To use the library, first download the library file, paste it into the designated directory, then open the examples folder and run the demo in that folder. This library is associated with the modbus_tk library, please make sure that the modbus_tk has been downloaded to the Raspberry Pi before using it.
+```shell
+python2 : 
+pip2 install modbus_tk smbus
+python3:
+pip3 install modbus_tk smbus
+```
+To use the serial port function of this library, please make sure that the serial port of the Raspberry Pi (/dev/ttyAMA0) is configured correctly.
 ## Methods
 
 ```python
   def begin(self)
     '''!
-      @brief 本函数将会尝试与从机设备进行通信,根据返回值判断通信是否成功
-      @return 返回通信结果
+      @brief This function will attempt to communicate with a slave device and determine if the communication is successful based on the return value.
+      @return Communication result
       @retval true  Succeed
       @retval false Failed
     '''
@@ -47,41 +52,41 @@ DFRobot_RainfallSensor
 
   def get_pid_vid(self)
     '''!
-      @brief  获取pid和vid
-      @return  Return  true:正确获取，false:获取数据失败或者获取数据错误
+      @brief  Get the PID and VID of the device.
+      @return Return true if the data is obtained correctly, false if failed or incorrect data.
     '''
 
 
   def get_rainfall(self)
     '''!
-      @brief  获取累计雨量
-      @return 累计雨量
+      @brief Get cumulative rainfall
+      @return Cumulative rainfall value
     '''
 
   def get_rainfall_time(self,hour)
     '''!
-      @brief  获取指定时间内的累计雨量
-      @param hour 指定时间(有效设置为1-24小时)
-      @return 累计雨量
+      @brief   Get the cumulative rainfall within the specified time
+      @param hour Specified time (valid range is 1-24 hours)
+      @return Cumulative rainfall
     '''
 
   def get_raw_data(self)
     '''!
-      @brief 获取原始数据
-      @return 雨量的翻斗次数，单位 次
+      @brief Get raw data
+      @return Number of tipping bucket counts, unit: count
     '''
 
   def set_rain_accumulated_value(self,value)
     '''!
-      @brief 设置雨量累加值
-      @param value 雨量累加值，单位为毫米
-      @return 返回 0 设置成功，其他值设置失败 
+      @brief Set the rainfall accumulation value
+      @param value Rainfall accumulation value, in millimeters
+      @return Returns 0 if setting succeeded, other values if setting failed
     '''
 
-  def get_sensor_working_time(self):
+  def get_sensor_working_time(self)
     '''!
       @brief Obtain the sensor working time
-      @return 工作时间,单位小时
+      @return Working time of the sensor, in hours
     '''
 ```
 

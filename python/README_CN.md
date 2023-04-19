@@ -3,7 +3,7 @@ DFRobot_RainfallSensor
 
 * [English Version](./README.md)
 
-本库提供了获取SEN0575采集数据的全部方法，用户只需要简单的使用本库就可以获取到SEN0575采集的数据。
+本库为SEN0575 雨量传感器套件提供了Arduino IDE 和树莓派软件驱动以及示例代码，用户可根据此库通过软件操作来获取雨量传感器获取的24小时内的雨量信息、传感器的工作时间以及传感器工作时间内的累计雨量信息。
 
 ![产品效果图片](../resources/images/SEN0575.png)
 
@@ -25,7 +25,14 @@ DFRobot_RainfallSensor
 ## 库安装
 
 要使用库, 首先下载库文件, 将其粘贴到指定的目录中, 然后打开examples文件夹并在该文件夹中运行演示。
-本库关联了modbus_tk、smbus库，使用前请确保树莓派已经下载了modbus_tk、smbus。
+本库关联了modbus_tk库，使用前请确保树莓派已经下载了modbus_tk。
+```shell
+python2 : 
+pip2 install modbus_tk smbus
+python3:
+pip3 install modbus_tk smbus
+```
+使用本库的串口功能时，请保证树莓派的串口/dev/ttyAMA0 得到了正确的配置
 
 ## 方法
 

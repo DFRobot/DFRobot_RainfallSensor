@@ -1,7 +1,7 @@
 /*!
  * @file  DFRobot_RainfallSensor.h
  * @brief  Define infrastructure of DFRobot_RainfallSensor class
- * @details  该库实现了与SEN0575设备进行通信的所有功能，包括配置设备参数和读取设备数据
+ * @details  This library implements all the functions of communicating with the SEN0575 device, including configuring device parameters and reading device data.
  * @copyright  Copyright (c) 2010 DFRobot Co.Ltd (http://www.dfrobot.com)
  * @license  The MIT License (MIT)
  * @author  [fary](feng.yang@dfrobot.com)
@@ -29,51 +29,51 @@ class DFRobot_RainfallSensor{
     #define UART_MODE 1
     /**
      * @enum  eSEN0575InputReg_t
-     * @brief  设备的输入寄存器地址
+     * @brief  Input Register Address
      */
     typedef enum{
-      eInputRegPidSEN0575=0x0000,                 /**< SEN0575 存储PID的输入寄存器的地址 */
-      eInputRegVidSEN0575,                        /**< SEN0575 存储VID的输入寄存器的地址 */
-      eInputRegRegAddrSEN0575,                    /**< SEN0575 储存设备地址的寄存器 */
-      eInputRegBaudSEN0575,                       /**< SEN0575 储存串口波特率的寄存器 */
-      eInputRegVerifyAndStopSEN0575,              /**< SEN0575 存储串口奇偶检验位与停止位的输入寄存器的地址 */
-      eInputRegVersionSEN0575,                    /**< SEN0575 存储固件版本的输入寄存器地址 */
-      eInputRegTimeRainFallLSEN0575,              /**< SEN0575 存储设置时间内的累计雨量低16位 */
-      eInputRegTimeRainFallHSEN0575,              /**< SEN0575 存储设置时间内的累计雨量高16位 */
-      eInputRegCumulativeRainFallLSEN0575,        /**< SEN0575 存储开始工作后累计雨量低16位 */
-      eInputRegCumulativeRainFallHSEN0575,        /**< SEN0575 存储开始工作后累计雨量高16位 */
-      eInputRegRawDataLSEN0575,                   /**< SEN0575 存储原始数据低16位 */
-      eInputRegRawDataHSEN0575,                   /**< SEN0575 存储原始数据高16位 */
-      eInputRegSysWorkingTimeSEN0575,             /**< SEN0575 系统工作时间 */
+      eInputRegPidSEN0575=0x0000,                 /**< SEN0575 stores the address of the input register for PID in memory. */
+      eInputRegVidSEN0575,                        /**< The address of the input register for VID in memory. */
+      eInputRegRegAddrSEN0575,                    /**< The address of the input register for device address in memory. */
+      eInputRegBaudSEN0575,                       /**< The address of the input register for device baudrate in memory. */
+      eInputRegVerifyAndStopSEN0575,              /**< The address of the input register for RS485 parity bit and stop bit in memory. */
+      eInputRegVersionSEN0575,                    /**< The address of the input register for firmware version in memory. */
+      eInputRegTimeRainFallLSEN0575,              /**< The address of the input register for low 16-bit cumulative rainfall in set time. */
+      eInputRegTimeRainFallHSEN0575,              /**< The address of the input register for high 16-bit cumulative rainfall in set time. */
+      eInputRegCumulativeRainFallLSEN0575,        /**< The address of the input register for low 16-bit cumulative rainfall since working started. */
+      eInputRegCumulativeRainFallHSEN0575,        /**< The address of the input register for high 16-bit cumulative rainfall since working started. */
+      eInputRegRawDataLSEN0575,                   /**< The address of the input register for raw data (low 16-bit) in memory. */
+      eInputRegRawDataHSEN0575,                   /**< he address of the input register for raw data (high 16-bit) in memory. */
+      eInputRegSysWorkingTimeSEN0575,             /**< The address of the input register for system working time in memory. */
     }eSEN0575InputReg_t;
   
     /**
      * @enum  eSEN0575HoldingReg_t
-     * @brief  设备的保持寄存器地址
+     * @brief  Holding Register Address of the Device
      */
     typedef enum{
-      eHoldingRegReserved0SEN0575=0x0000,         /**< SEN0575 该寄存器保留 */
-      eHoldingRegReserved1SEN0575,                /**< SEN0575 该寄存器保留 */
-      eHoldingRegReserved2SEN0575,                /**< SEN0575 该寄存器保留 */
-      eHoldingRegReserved3SEN0575,                /**< SEN0575 该寄存器保留 */
-      eHoldingRegReserved4SEN0575,                /**< SEN0575 该寄存器保留 */
-      eHoldingRegReserved5SEN0575,                /**< SEN0575 该寄存器保留 */
-      eHoldingRegRainHourSEN0575,                 /**< SEN0575 设置计算累计雨量的时间 */
-      eHoldingRegBaseRainFallSEN0575,             /**< SEN0575 设置雨量累加值 */
+      eHoldingRegReserved0SEN0575=0x0000,         /**< SEN0575 this register is reserved. */
+      eHoldingRegReserved1SEN0575,                /**< SEN0575 this register is reserved. */
+      eHoldingRegReserved2SEN0575,                /**< SEN0575 this register is reserved. */
+      eHoldingRegReserved3SEN0575,                /**< SEN0575 this register is reserved. */
+      eHoldingRegReserved4SEN0575,                /**< SEN0575 this register is reserved. */
+      eHoldingRegReserved5SEN0575,                /**< SEN0575 this register is reserved. */
+      eHoldingRegRainHourSEN0575,                 /**< Set the time to calculate cumulative rainfall */
+      eHoldingRegBaseRainFallSEN0575,             /**< Set the base rainfall value. */
     }eSEN0575HoldingReg_t;
   
     /**
      * @fn DFRobot_RainfallSensor
      * @brief Construct a new dfrobot windspeedwinddirectionrainsensor object
-     * @param mode 工作模式，IIC_MODE:0 ,UART_MODE:1
+     * @param mode Working mode,IIC_MODE:0 ,UART_MODE:1
      */
     DFRobot_RainfallSensor(uint8_t mode);
     ~DFRobot_RainfallSensor(){};
   
     /**
      * @fn begin
-     * @brief 本函数将会尝试与从机设备进行通信,根据返回值判断通信是否成功
-     * @return 返回通信结果
+     * @brief This function will attempt to communicate with a slave device and determine if the communication is successful based on the return value.
+     * @return Communication result
      * @retval true  Succeed
      * @retval false Failed
      */
@@ -88,51 +88,51 @@ class DFRobot_RainfallSensor{
   
     /**
      * @fn getRainfall
-     * @brief 获取累计雨量
-     * @return float 累计雨量
+     * @brief Get cumulative rainfall
+     * @return Cumulative rainfall value
      */
     float getRainfall(void);
   
     /**
-     * @fn getRainfallD
-     * @brief 获取指定时间内的累计雨量
-     * @param hour 指定时间(有效设置为1-24小时)
-     * @return float 累计雨量
+     * @fn getRainfall
+     * @brief Get the cumulative rainfall within the specified time
+     * @param hour Specified time (valid range is 1-24 hours)
+     * @return Cumulative rainfall
      */
     float getRainfall(uint8_t hour);
   
     /**
      * @fn getRawData
      * @brief Get the Rawdata object
-     * @return 雨量的翻斗次数，单位 次
+     * @return Number of tipping bucket counts, unit: count
      */
     uint32_t getRawData();
   
     /**
      * @fn getSensorWorkingTime
      * @brief Obtain the sensor working time
-     * @return 工作时间,单位小时
+     * @return Working time of the sensor, in hours
      */
     float getSensorWorkingTime();
   
     /**
      * @fn setRainAccumulatedValue
      * @brief Set the Rain Accumulated Value object
-     * @param accumulatedValue 雨量累加值，单位为毫米
-     * @return 返回设置结果
-     * @retval 0 设置成功
-     * @retval 其他值设置失败 
+     * @param accumulatedValue Rainfall accumulation value, in millimeters
+     * @return Set result
+     * @retval 0  set successfully
+     * @retval Other values set failed
      */
     uint8_t setRainAccumulatedValue(float accumulatedValue = 0.2794);
     uint32_t vid;
     uint32_t pid;
   private:
     /**
-     * @fn getVid
+     * @fn getPidVid
      * @brief  Get VID and PID
-     * @return  获取的结果
-     * @retval true:正确获取
-     * @retval false:获取数据失败或者获取数据错误
+     * @return  Result of getting the VID and PID
+     * @retval true:succeeded in getting the VID and PID
+     * @retval false:failed to get the data or the data obtained is incorrect
      */
     bool getPidVid(void);
     virtual uint8_t readRegister(uint8_t reg,void* pBuf, size_t size){return 0;};
@@ -148,14 +148,14 @@ class DFRobot_RainfallSensor_UART:public DFRobot_RainfallSensor,public DFRobot_R
     /**
      * @fn DFRobot_RainfallSensor_UART
      * @brief Construct a new dfrobot windspeedwinddirectionrainsensor uart object
-     * @param s 需要使用的串口设备
+     * @param s The UART device to be used
      */
     DFRobot_RainfallSensor_UART(Stream *s);
     ~DFRobot_RainfallSensor_UART(){};
     /**
      * @fn begin
-     * @brief 本函数将会尝试与从机设备进行通信,根据返回值判断通信是否成功
-     * @return 返回通信结果
+     * @brief This function will attempt to communicate with the slave device, and check the communication status based on the return value.
+     * @return Communication result
      * @retval true  Succeed
      * @retval false Failed
      */
@@ -163,21 +163,21 @@ class DFRobot_RainfallSensor_UART:public DFRobot_RainfallSensor,public DFRobot_R
   private:
     /**
      * @fn readRegister
-     * @brief 读输入寄存器
-     * @param reg 输入寄存器地址
-     * @return uint16_t 读到的数据
+     * @brief Read input register
+     * @param reg Input register address
+     * @return uint16_t Data read
      */
     uint16_t readRegister(uint16_t reg);
   
     /**
      * 
      * @fn writeRegister
-     * @brief 写保持寄存器,写完后内部延时了12MS,传感器需要下写入后花费12Ms进行保存，此时不能进行通信
-     * @param reg 保持寄存器地址
-     * @param data 要写入的数据
-     * @return uint16_t 写入结果
-     * @retval 0 表示成功
-     * @retval 其他值设置失败 
+     * @brief Write to the holding register. After writing, an internal delay of 12ms is applied. The sensor needs to spend 12ms to save after writing, during which communication cannot be performed.
+     * @param reg The address of the holding register.
+     * @param data The data to be written.
+     * @return uint16_t The result of the write operation.
+     * @retval 0 Indicates success.
+     * @retval Other values indicate failure to set.
      */
     uint16_t writeRegister(uint16_t reg,uint16_t data);
   private:
@@ -189,14 +189,14 @@ public:
   /**
    * @fn DFRobot_RainfallSensor_I2C
    * @brief Construct a new dfrobot windspeedwinddirectionrainsensor iic object
-   * @param pWire 需要使用的I2C设备
+   * @param pWire The I2C device to be used
    */
   DFRobot_RainfallSensor_I2C(TwoWire *pWire);
   ~DFRobot_RainfallSensor_I2C(){};
   /**
    * @fn begin
-   * @brief 本函数将会尝试与从机设备进行通信,根据返回值判断通信是否成功
-   * @return 返回通信结果
+   * @brief This function will attempt to communicate with the slave device, and returns the communication result
+   * @return Communication result
    * @retval true  Succeed
    * @retval false Failed
    */
@@ -204,23 +204,23 @@ public:
 private:
   /**
    * @fn readRegister
-   * @brief 读I2C寄存器
-   * @param reg I2C寄存器地址
-   * @param pBuf 缓存空间
-   * @param size 读取长度
-   * @return 读取长度
+   * @brief Read from an I2C register
+   * @param reg I2C register address
+   * @param pBuf Buffer space
+   * @param size Read length
+   * @return Length of data read
    */
   uint8_t readRegister(uint8_t reg,void* pBuf, size_t size);
 
   /**
    * @fn writeRegister
-   * @brief 写I2C寄存器,写完后内部延时了12MS,传感器需要下写入后花费12Ms进行保存，此时不能进行通信
-   * @param reg I2C寄存器地址
-   * @param pBuf 数据存储空间
-   * @param size 读取长度
-   * @return 写入的结果
-   * @retval 0 表示成功
-   * @retval 其他值设置失败 
+   * @brief Write I2C register, after writing, there is an internal delay of 12MS. The sensor needs to spend 12Ms to save after writing, and communication cannot be performed at this time.
+   * @param reg I2C register address
+   * @param pBuf Data storage space
+   * @param size Read length
+   * @return Write result
+   * @retval 0 indicates success
+   * @retval other values indicate setting failure
    */
   uint8_t writeRegister(uint8_t reg,void* pBuf,size_t size);
 private:

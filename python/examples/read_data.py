@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*
 '''!
   @file  read_data.py
-  @brief 本示例介绍了使用本模块测试一小时内降雨量的采集的方法
+  @brief Get the raw data, which is the tipping bucket count of rainfall, in units of counts.
   @copyright   Copyright (c) 2021 DFRobot Co.Ltd (http://www.dfrobot.com)
   @license     The MIT License (MIT)
   @author      [fary](feng.yang@dfrobot.com)
@@ -29,17 +29,17 @@ def setup():
   print("vid: %#x"%(sensor.vid))
   print("pid: %#x"%(sensor.pid))
 
-  #设置雨量累加值，单位为mm
+  #Get the raw data, which is the tipping bucket count of rainfall, in units of counts.
   #sensor.set_rain_accumulated_value(0.2794)
 def loop():
-  #获取传感器运行时间，单位 小时
+  #Get the sensor operating time in units of hours.
   workingtime = sensor.get_sensor_working_time()
-  #获取传感器运行时间内的累计雨量
+  #Get the sensor operating time in units of hours.
   rainfall=sensor.get_rainfall()
-  #获取传感器1小时内的累计雨量（函数参数可选1-24）
+  #Here is an example function that calculates the cumulative rainfall in a specified hour of the system. The function takes an optional argument, which can be any value between 1 and 24.
   one_hour_rainfall=sensor.get_rainfall_time(1)
 
-  #获取传感器原始数据，雨量的翻斗次数，单位 次
+  #Get the raw data, which is the tipping bucket count of rainfall, in units of counts.
   rainfall_raw=sensor.get_raw_data()
 
   print("workingtime : %f H"%(workingtime))
