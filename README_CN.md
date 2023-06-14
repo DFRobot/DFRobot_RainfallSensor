@@ -6,9 +6,9 @@ DFRobot_RainfallSensor
 
 ![产品效果图片](./resources/images/SEN0575.png)
 
-## 产品链接（https://www.dfrobot.com）
+## 产品链接（[ 雨量传感器/翻斗式雨量计-其他传感器-DFRobot创客商城](https://www.dfrobot.com.cn/goods-3698.html)）
     SKU：SEN0575
-  
+
 ## 目录
 
   * [概述](#概述)

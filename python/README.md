@@ -7,7 +7,7 @@ This library provides Arduino IDE and Raspberry Pi software drivers, as well as 
 
 ![产品效果图](../resources/images/SEN0575.png)
 
-## Product Link (https://www.dfrobot.com)
+## Product Link ([Tipping Bucket Rainfall Measurement Gauge Detector for Weather Station - DFRobot](https://www.dfrobot.com/product-2689.html))
 
     SKU：SEN0575
 
